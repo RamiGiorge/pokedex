@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import styles from './SearchForm.module.css'
 import { PokemonsContext } from '../../context/PokemonsContext'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SearchForm = ({ setFiltered }) => {
     const [searchInput, setSearchInput] = useState('')
@@ -55,11 +54,7 @@ const SearchForm = ({ setFiltered }) => {
                 {showAutocomplete && <div className={styles.autocomplete}>{suggestions.map((suggestion => {
                     return <p key={suggestion.id} onClick={handleAutocomplete}>{suggestion.name}</p>
                 }))}</div>}
-
-                <button className={styles.searchBtn}>Search
-                    {/* <FontAwesomeIcon icon="search" size="lg" className={styles.searchIcon} /> */}
-                    {/* <FontAwesomeIcon icon='faSearch' /> */}
-                </button>
+                <button className={styles.searchBtn}>Search</button>
             </div>
         </form>
     )

@@ -11,14 +11,11 @@ const PokemonGrid = ({ filtered, setFiltered }) => {
 
     const renderPokemons = () => {
         switch (activeTab) {
-
             case 'Captured':
                 return (
                     <div className={styles.pokemonGrid}>
                         {pokemons.map(pokemon => {
-                            return pokemon.isCaptured ?
-                                <PokemonCard pokemon={pokemon} key={pokemon.id} />
-                                : null
+                            return pokemon.isCaptured ? <PokemonCard pokemon={pokemon} key={pokemon.id} /> : null
                         })}
                     </div>
                 )
@@ -40,10 +37,7 @@ const PokemonGrid = ({ filtered, setFiltered }) => {
                             )
                         })}
                     </div>
-
                 )
-
-
         }
     }
 
@@ -51,9 +45,8 @@ const PokemonGrid = ({ filtered, setFiltered }) => {
         <>
             <div className={styles.tabs}>
                 {tabs.map(tab => <button key={tab} onClick={() => setActiveTab(tab)}>{tab}</button>)}
-
             </div>
-            {/* {filtered && <button className={styles.backBtn} onClick={() => setFiltered(null)}>Back</button>} */}
+            {filtered && <button className={styles.backBtn} onClick={() => setFiltered(null)}>Back</button>}
             {renderPokemons()}
         </>
     )
