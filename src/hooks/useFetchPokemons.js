@@ -21,7 +21,6 @@ const usePokemonFetch = (url) => {
             }
             setPending(false)
             setError(error.message)
-
         })
         return () => abortController.abort()
     }, [url])
@@ -34,12 +33,10 @@ const usePokemonFetch = (url) => {
                     if (!res.ok) throw Error("Fetching failed")
                     return res.json()
                 }).then((pokemon) => {
-
-                    setItems(prevState => [...prevState, pokemon])
+                    setItems(prevState => [...prevState, { ...pokemon, isCaptured: false }])
                 }).catch(error => {
                     if (error.name === 'AbortError') {
                         setError(error.name)
-
                     }
                     setError(error.message)
                 })
