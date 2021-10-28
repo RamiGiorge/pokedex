@@ -1,26 +1,30 @@
-import { useHistory, useLocation } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import styles from './PokemonDetails.module.css'
 import { v4 as uuidv4 } from 'uuid'
 import Button from '../UI/Button'
+import { PokemonsContext } from '../../context/PokemonsContext'
+import { useContext, useState, useEffect } from 'react'
 
 const PokemonDetails = () => {
+    const [pokemon, setPokemon] = useState((null))
+    const { id } = useParams()
     const history = useHistory()
-    const location = useLocation()
-    const { pokemon } = location.state
+    const { pokemons } = useContext(PokemonsContext)
+
+    useEffect(() => {
+        pokemons && pokemons.map(pokemon => id === pokemon.id.toString() ? setPokemon(pokemon) : null)
+    }, [id, pokemons])
 
     const navigateBack = () => {
         history.push("/")
     }
 
-    return (
-        <div className={styles.detailsContainer}>
-
-            <Button handleClick={navigateBack} />
-
+    const renderDetails = () => {
+        return (
             <div className={styles.pokemonDetails}>
 
                 <div className={styles.generalInfo}>
-                    <div className={styles.title}>{(pokemon.name).toUpperCase()} - {pokemon.id}</div>
+                    {pokemon && <div className={styles.title}>{(pokemon.name).toUpperCase()} - {pokemon.id}</div>}
 
                     <div className={styles.status}>
                         Status: {pokemon.isCaptured ? <span>Caught</span> : <span>Uncaught</span>}
@@ -61,6 +65,13 @@ const PokemonDetails = () => {
                     </ul>
                 </div>
             </div>
+        )
+    }
+
+    return (
+        <div className={styles.detailsContainer}>
+            <Button handleClick={navigateBack} />
+            {pokemon && renderDetails()}
         </div >
     )
 }
