@@ -4,7 +4,8 @@
 }
 
 .card {
-    box-shadow:  inset 0px 0px 40px rgba(255, 255, 255, 0.63);
+    /* box-shadow:  inset 0px 0px 40px rgba(255, 255, 255, 0.63); */
+    box-shadow:  inset 0px 0px 40px rgba(161, 218, 190, 0.63);
     transition: .2s;
     position: relative;
     padding: 10px;
@@ -14,7 +15,28 @@
 }
 
 .captured {
-    box-shadow: inset 0 0 30px rgb(102, 184, 216);
+    /* box-shadow: inset 0 0 30px rgb(102, 184, 216); */
+    box-shadow: inset 0 0 30px rgb(34, 157, 194);
+    position: relative;
+    overflow: hidden;
+}
+
+.captured::after {
+    content: 'CAUGHT';
+    box-shadow: inset 0 0 30px rgb(34, 157, 194);
+    backdrop-filter: blur(5px);
+    position: absolute;
+    width: 140%;
+    height: 15%;
+    top: 45%;
+    left: -20%;
+    transform: rotateZ(-39deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    color: black;
 }
 
 .card:hover {
@@ -38,17 +60,6 @@
     color: white;
 }
 
-.backBtn {
-    background: none;
-    border-radius: 8px;
-    padding: 10px 12px;
-    color: white;
-    border: none;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.63);
-    font-size: 20px;
-    cursor: pointer;
-}
-
 .card .types {
     width: 100%;
     display: flex;
@@ -62,6 +73,7 @@
     border-radius: 5px;
     border: none;
     box-shadow: inset 0 0 15px rgb(42, 133, 39);
+    /* box-shadow: inset 0 0 10px rgb(34, 157, 194); */
     font-style: italic;
 }
 
@@ -70,12 +82,14 @@
     text-align: center;
     outline: none;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     background: none;
     color: white;
     padding: 5px;
     cursor: pointer;
     margin-top: 5px;
-    box-shadow: inset 0 0 30px rgb(102, 184, 216);
+    box-shadow: inset 0 0 30px rgb(34, 157, 194);
     border-radius: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
 }

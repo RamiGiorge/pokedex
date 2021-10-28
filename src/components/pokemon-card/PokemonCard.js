@@ -21,7 +21,7 @@ const PokemonCard = ({ pokemon }) => {
                     state: {
                         pokemon
                     }
-                }} >
+                }}>
                     <div className={styles.content}>
                         <h3 className={styles.title}>{pokemon.name.toUpperCase()} - {pokemon.id} </h3>
                         <img src={pokemon.sprites.back_default} alt="pokemon" />

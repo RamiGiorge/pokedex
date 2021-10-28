@@ -1,6 +1,7 @@
 import { useHistory, useLocation } from 'react-router'
 import styles from './PokemonDetails.module.css'
 import { v4 as uuidv4 } from 'uuid'
+import Button from '../UI/Button'
 
 const PokemonDetails = () => {
     const history = useHistory()
@@ -13,9 +14,8 @@ const PokemonDetails = () => {
 
     return (
         <div className={styles.detailsContainer}>
-            <div className={styles.btnWrapper}>
-                <button onClick={navigateBack} className={styles.backBtn}>Back</button>
-            </div>
+
+            <Button handleClick={navigateBack} />
 
             <div className={styles.pokemonDetails}>
 
