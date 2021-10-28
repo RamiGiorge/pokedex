@@ -1,23 +1,32 @@
-import { useHistory, useParams } from 'react-router'
-import useFetchPokemon from '../../hooks/useFetchPokemon'
+import { useHistory, useLocation } from 'react-router'
 import styles from './PokemonDetails.module.css'
 
 const PokemonDetails = () => {
-    const { id } = useParams()
-    const { data: pokemon, error, pending } = useFetchPokemon(`https://pokeapi.co/api/v2/pokemon/${id}`)
     const history = useHistory()
-
+    const location = useLocation()
+    const { pokemon } = location.state
 
     const navigateBack = () => {
         history.push("/")
     }
 
     return (
-        <div className={styles.pokemonDetails}>
+        <div className={styles.detailsContainer}>
             <button onClick={navigateBack}>Back</button>
-            {pending && <div>Loading...</div>}
-            {error && <div>{error}</div>}
-            {pokemon && <div>{pokemon.name}</div>}
+            <div className={styles.pokemonDetails}>
+                <div className={styles.generalInfo}>
+                    <div>{pokemon.name} - {pokemon.id}</div>
+                    <div>Status:</div>
+                    <img src={pokemon.sprites.back_default} alt="pokemon" />
+                </div>
+                <div className={styles.detailedInfo}>
+                    <div className={styles.types}>{pokemon.types.map(({ type }) => <span key={Math.random()} className={styles.type}>{type.name}</span>)}</div>
+
+                </div>
+
+
+
+            </div>
         </div>
     )
 }

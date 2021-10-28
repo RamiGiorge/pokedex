@@ -16,10 +16,10 @@ body {
 }
 
 .warning {
-  color: rgb(175, 164, 7);
+  color: rgba(17, 127, 201, 0.4);
   width: 100%;
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .fetchMore {

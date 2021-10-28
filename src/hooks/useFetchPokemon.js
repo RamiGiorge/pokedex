@@ -28,4 +28,4 @@ const useFetchPokemon = (url) => {
     return { pending, error, data }
 }
 
-export default useFetchPokemon
+// export default useFetchPokemon

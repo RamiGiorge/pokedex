@@ -15,7 +15,12 @@ const PokemonCard = ({ pokemon }) => {
     return (
         <div className={styles.cardContainer}>
             <div key={pokemon.id} className={pokemon.isCaptured ? `${styles.card} ${styles.captured}` : styles.card}>
-                <Link to={`/pokemon/${pokemon.id}`}>
+                <Link to={{
+                    pathname: `/pokemon/${pokemon.id}`,
+                    state: {
+                        pokemon
+                    }
+                }} >
                     <div className={styles.content}>
                         <h3 className={styles.title}>{pokemon.name.toUpperCase()} - {pokemon.id} </h3>
                         <img src={pokemon.sprites.back_default} alt="pokemon" />

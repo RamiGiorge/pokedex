@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header title='pokemons' />
+        <Header title='pokédex' />
         <Switch>
           <Route exact path='/'>
             <PokemonProvider>
@@ -17,7 +17,9 @@ function App() {
             </PokemonProvider>
           </Route>
           <Route path='/pokemon/:id'>
-            <PokemonDetails />
+            <PokemonProvider>
+              <PokemonDetails />
+            </PokemonProvider>
           </Route>
         </Switch>
       </div>
