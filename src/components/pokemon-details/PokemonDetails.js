@@ -1,5 +1,6 @@
 import { useHistory, useLocation } from 'react-router'
 import styles from './PokemonDetails.module.css'
+import { v4 as uuidv4 } from 'uuid'
 
 const PokemonDetails = () => {
     const history = useHistory()
@@ -12,22 +13,55 @@ const PokemonDetails = () => {
 
     return (
         <div className={styles.detailsContainer}>
-            <button onClick={navigateBack}>Back</button>
-            <div className={styles.pokemonDetails}>
-                <div className={styles.generalInfo}>
-                    <div>{pokemon.name} - {pokemon.id}</div>
-                    <div>Status:</div>
-                    <img src={pokemon.sprites.back_default} alt="pokemon" />
-                </div>
-                <div className={styles.detailedInfo}>
-                    <div className={styles.types}>{pokemon.types.map(({ type }) => <span key={Math.random()} className={styles.type}>{type.name}</span>)}</div>
-
-                </div>
-
-
-
+            <div className={styles.btnWrapper}>
+                <button onClick={navigateBack} className={styles.backBtn}>Back</button>
             </div>
-        </div>
+
+            <div className={styles.pokemonDetails}>
+
+                <div className={styles.generalInfo}>
+                    <div className={styles.title}>{(pokemon.name).toUpperCase()} - {pokemon.id}</div>
+
+                    <div className={styles.status}>
+                        Status: {pokemon.isCaptured ? <span>Caught</span> : <span>Uncaught</span>}
+                    </div>
+
+                    <img src={pokemon.sprites.back_default} alt="pokemon" />
+
+                    <div className={styles.size}>
+                        <div>Height: <span>{pokemon.height}</span></div>
+                        <div>Weight: <span>{pokemon.weight}</span></div>
+                    </div>
+                </div>
+
+                <div className={styles.detailedInfo}>
+                    <h1 className={styles.title}>INFO</h1>
+
+                    <div className={styles.typesContainer}>
+                        <h3>Types</h3>
+                        <div className={styles.types}>
+                            {pokemon.types.map(({ type }) => <span key={uuidv4()} className={styles.type}>{type.name}</span>)}
+                        </div>
+                    </div>
+
+                    <div className={styles.abilitiesContainer}>
+                        <h3>Abilities</h3>
+                        <div className={styles.abilities}>
+                            {pokemon.abilities.map(({ ability }) => <span key={uuidv4()} className={styles.ability}>{ability.name}</span>)}
+                        </div>
+                    </div>
+
+                    <ul className={styles.stats}>
+                        {pokemon.stats.map(({ base_stat, stat }) => {
+                            return <li key={uuidv4()} className={styles.stat}>
+                                <span>{stat.name}:</span>
+                                <span>{base_stat}</span>
+                            </li>
+                        })}
+                    </ul>
+                </div>
+            </div>
+        </div >
     )
 }
 

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import styles from './PokemonCard.module.css'
 import { PokemonsContext } from '../../context/PokemonsContext'
 import { useContext } from "react"
+import { v4 as uuidv4 } from 'uuid'
 
 const PokemonCard = ({ pokemon }) => {
     const { pokemons, setPokemons } = useContext(PokemonsContext)
@@ -24,7 +25,7 @@ const PokemonCard = ({ pokemon }) => {
                     <div className={styles.content}>
                         <h3 className={styles.title}>{pokemon.name.toUpperCase()} - {pokemon.id} </h3>
                         <img src={pokemon.sprites.back_default} alt="pokemon" />
-                        <div className={styles.types}>{pokemon.types.map(({ type }) => <span key={Math.random()} className={styles.type}>{type.name}</span>)}</div>
+                        <div className={styles.types}>{pokemon.types.map(({ type }) => <span key={uuidv4()} className={styles.type}>{type.name}</span>)}</div>
                     </div>
                 </Link>
             </div>
