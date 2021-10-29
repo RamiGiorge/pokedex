@@ -4,6 +4,7 @@ import Home from './containers/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import PokemonDetails from './components/pokemon-details/PokemonDetails';
 import { PokemonProvider } from './context/PokemonsContext';
+import "./components/fontawesome/FontAwesome";
 
 function App() {
   return (

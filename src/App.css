@@ -24,17 +24,25 @@ body {
 
 .fetchMore {
   width: 100%;
-  text-align: center;
   border: none;
   background: none;
   cursor: pointer;
-  color: rgb(223, 97, 97);
+  color: rgb(33, 106, 148);
   font-size: 20px;
   padding: 10px;
   transition: .2s;
+  animation: load infinite 1s ease-in-out alternate;
 }
 
 .fetchMore:hover {
-color: rgb(33, 106, 148);
-transform: scale(1.1);
+  transform: scale(1.2);
+}
+
+.fetchIcon {
+  pointer-events: none;
+}
+
+@keyframes load {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }

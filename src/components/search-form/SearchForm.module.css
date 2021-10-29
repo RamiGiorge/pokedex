@@ -49,3 +49,7 @@
     transform: scale(.9);
     color: #6127;
 }
+
+.searchIcon {
+    pointer-events: none;
+}
