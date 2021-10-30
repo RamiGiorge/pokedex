@@ -43,7 +43,7 @@ const PokemonDetails = () => {
 
                     <div className={styles.typesContainer}>
                         <h3>Types</h3>
-                        <div className={styles.types}>
+                        <div className={styles.types} >
                             {pokemon.types.map(({ type }) => <span key={uuidv4()} className={styles.type}>{type.name}</span>)}
                         </div>
                     </div>

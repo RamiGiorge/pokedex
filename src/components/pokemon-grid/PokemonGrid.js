@@ -22,10 +22,15 @@ const PokemonGrid = ({ filtered, setFiltered }) => {
         }
     }
 
+    const handleClick = () => {
+        setFiltered(null)
+        setActiveTab('All')
+    }
+
     return (
         <>
             <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
-            {filtered && <Button handleClick={() => setFiltered(null)} />}
+            {filtered && <Button handleClick={handleClick} />}
             <div className={styles.pokemonGrid}>
                 {renderPokemons()}
             </div>
