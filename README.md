@@ -4,7 +4,7 @@ This is a pokédex-like web app aimed to provide information and details about y
 
 ## Installation & Setup
 
-1. Clone this repository using the terminal or command line with 'git clone <url>' command
+1. Clone this repository using the terminal or command line with 'git clone url' command
 2. Install all dependencies using 'npm install'
 3. Type 'npm start' to start the development server
 
@@ -24,7 +24,7 @@ This is a pokédex-like web app aimed to provide information and details about y
 - You can search for pokemons by their name, id or type
 - Search has an autocomplete feature to help you find your desired pokemon
 - You can view all pokemons or filter them by their status: Caught or Uncaught
-- Slick futuristic design
+- Slick, futuristic fully responsive design
 - Comprehensive automated tests covering the app's UI functionality from beginning to end
 - Testing is done with Cypress (my testing framework of choice!)
   
