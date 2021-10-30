@@ -27,3 +27,7 @@ This is a pokédex-like web app aimed to provide information and details about y
 - Slick futuristic design
 - Comprehensive automated tests covering the app's UI functionality from beginning to end
 - Testing is done with Cypress (my testing framework of choice!)
+  
+## Screenshot
+  
+<img width="629" alt="Screen Shot 2021-10-30 at 9 55 06 PM" src="https://user-images.githubusercontent.com/89678609/139557161-172b39fd-ae94-4b66-9ac4-946db14f7dd5.png">
