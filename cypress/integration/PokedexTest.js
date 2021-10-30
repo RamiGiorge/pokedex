@@ -57,24 +57,16 @@ describe('Unit and integration testing', () => {
         })
         cy.get(className('backBtn')).should('be.visible').click()
         cy.get(className('pokemonGrid')).should('be.visible').then(() => {
-            cy.contains('BULBASAUR').should('exist')
+            cy.contains(pokemon.toUpperCase()).should('be.visible')
         })
     })
 
     it("Allows the user to veiw a pokemon's details page and then navigate back to homepage", () => {
+        const detailInfo = ['INFO', 'Status', 'Types', 'Abilities', 'Height', 'Weight', 'hp', 'attack', 'speed', pokemon.toUpperCase()]
         searchPokemon()
         cy.get(className('PokemonCard_content')).click().then(() => {
-            cy.get(className('PokemonDetails'))
-                .should('be.visible')
-                .should('contain', pokemon.toUpperCase())
-                .should('contain', 'INFO')
-                .should('contain', 'Status')
-                .should('contain', 'Types')
-                .should('contain', 'Abilities')
-                .should('contain', 'Height')
-                .should('contain', 'hp')
-                .should('contain', 'attack')
-                .should('contain', 'speed')
+            cy.get(className('PokemonDetails')).as('details').should('be.visible')
+            detailInfo.map(detail => cy.get('@details').should('contain', detail))
         })
         cy.get(className('backBtn')).click().then(() => {
             cy.get(className('pokemonGrid')).should('be.visible')
