@@ -70,7 +70,7 @@ const PokemonDetails = () => {
 
     return (
         <div className={styles.detailsContainer}>
-            <Button handleClick={navigateBack} />
+            <Button handleClick={navigateBack}>Back</Button>
             {pokemon && renderDetails()}
         </div >
     )

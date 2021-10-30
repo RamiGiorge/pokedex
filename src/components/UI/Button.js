@@ -1,9 +1,9 @@
 import styles from './Button.module.css'
 
-const Button = ({ handleClick }) => {
+const Button = ({ handleClick, children }) => {
     return (
         <div className={styles.btnWrapper}>
-            <button onClick={handleClick} className={styles.backBtn}>Back</button>
+            <button onClick={handleClick} className={styles.backBtn}>{children}</button>
         </div>
     )
 }

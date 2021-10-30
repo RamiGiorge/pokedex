@@ -4,7 +4,6 @@
 }
 
 .card {
-    /* box-shadow:  inset 0px 0px 40px rgba(255, 255, 255, 0.63); */
     box-shadow:  inset 0px 0px 40px rgba(161, 218, 190, 0.63);
     transition: .2s;
     position: relative;
@@ -15,7 +14,6 @@
 }
 
 .captured {
-    /* box-shadow: inset 0 0 30px rgb(102, 184, 216); */
     box-shadow: inset 0 0 30px rgb(34, 157, 194);
     position: relative;
     overflow: hidden;

@@ -30,7 +30,7 @@ const PokemonGrid = ({ filtered, setFiltered }) => {
     return (
         <>
             <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
-            {filtered && <Button handleClick={handleClick} />}
+            {filtered && <Button handleClick={handleClick}>Back</Button>}
             <div className={styles.pokemonGrid}>
                 {renderPokemons()}
             </div>

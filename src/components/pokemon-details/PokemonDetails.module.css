@@ -24,8 +24,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  /* box-shadow: inset 0 0 40px rgb(102, 184, 216); */
-  /* box-shadow: inset 0 0 60px rgb(30, 50, 65); */
   box-shadow: inset 0 0 60px rgb(53, 88, 116);
   border-radius: 20px;
 }
