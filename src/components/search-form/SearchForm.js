@@ -3,11 +3,11 @@ import styles from './SearchForm.module.css'
 import { PokemonsContext } from '../../context/PokemonsContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const SearchForm = ({ setFiltered }) => {
+const SearchForm = () => {
     const [searchInput, setSearchInput] = useState('')
     const [suggestions, setSuggestions] = useState(null)
     const [showAutocomplete, setShowAutocomplete] = useState(null)
-    const { pokemons } = useContext(PokemonsContext)
+    const { pokemons, setFiltered } = useContext(PokemonsContext)
 
     useEffect(() => {
         const clickListen = (e) => {
@@ -33,7 +33,7 @@ const SearchForm = ({ setFiltered }) => {
             })
         })
         setSuggestions(autocomplete)
-        setShowAutocomplete(true)
+        autocomplete.length ? setShowAutocomplete(true) : setShowAutocomplete(false)
     }
 
     const handleSearch = (e) => {

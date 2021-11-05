@@ -1,13 +1,14 @@
 import { useContext, useState } from 'react'
 import PokemonCard from '../pokemon-card/PokemonCard'
 import styles from './PokemonGrid.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { PokemonsContext } from '../../context/PokemonsContext'
 import Button from '../UI/Button'
 import Tabs from '../tabs/Tabs'
 
-const PokemonGrid = ({ filtered, setFiltered }) => {
+const PokemonGrid = () => {
     const [activeTab, setActiveTab] = useState('All')
-    const { pokemons } = useContext(PokemonsContext)
+    const { pokemons, filtered, setFiltered, nextUrl, setUrl } = useContext(PokemonsContext)
     const tabs = ['All', 'Caught', 'Uncaught']
     const data = filtered ? filtered : pokemons
 
@@ -34,6 +35,9 @@ const PokemonGrid = ({ filtered, setFiltered }) => {
             <div className={styles.pokemonGrid}>
                 {renderPokemons()}
             </div>
+            {!filtered && nextUrl && <button onClick={() => setUrl(nextUrl)} className='fetchMore'>
+                <FontAwesomeIcon icon='chevron-down' className='fetchIcon' />
+            </button>}
         </>
     )
 }

@@ -46,8 +46,8 @@
 }
 
 .searchBtn:hover {
-    transform: scale(.9);
-    color: #6127;
+    transform: scale(1.2);
+    color: rgba(248, 16, 86, 0.76);
 }
 
 .searchIcon {

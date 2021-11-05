@@ -1,51 +1,40 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 const usePokemonFetch = (url) => {
-    const [data, setData] = useState(null)
+    const [nextUrl, setNextUrl] = useState(null)
     const [items, setItems] = useState([])
     const [pending, setPending] = useState(true)
     const [error, setError] = useState(null)
 
-    useEffect(() => {
-        const abortController = new AbortController()
-        fetch(url, { signal: abortController.signal }).then(response => {
-            if (!response.ok) throw Error("Fetching failed")
-            return response.json()
-        }).then(data => {
-            setData(data)
-            setPending(false)
-            setError(null)
-        }).catch(error => {
-            if (error.name === 'AbortError') {
-                setError(error.name)
-            }
-            setPending(false)
-            setError(error.message)
-        })
-        return () => abortController.abort()
+    const fetchPokemons = useCallback(async () => {
+        try {
+            const response = await fetch(url)
+            if (!response.ok) throw Error(`Fetching failed: server responded with a status of ${response.status}`)
+            const { results, next } = await response.json()
+            setNextUrl(next)
+            results.map(async (result) => {
+                try {
+                    const res = await fetch(result.url)
+                    if (!res.ok) throw Error(`Fetching failed: server responded with a status of ${res.status}`)
+                    const pokemon = await res.json()
+                    setItems(prevState => [...prevState, { ...pokemon, isCaptured: false }])
+                } catch (e) {
+                    setError(e.message)
+                }
+            })
+        } catch (e) {
+            setError(e.message)
+        }
+        setPending(false)
     }, [url])
 
     useEffect(() => {
-        const abortController = new AbortController()
-        if (data) {
-            data.results.forEach((pokemon) => {
-                fetch(pokemon.url, { signal: abortController.signal }).then(res => {
-                    if (!res.ok) throw Error("Fetching failed")
-                    return res.json()
-                }).then((pokemon) => {
-                    setItems(prevState => [...prevState, { ...pokemon, isCaptured: false }])
-                }).catch(error => {
-                    if (error.name === 'AbortError') {
-                        setError(error.name)
-                    }
-                    setError(error.message)
-                })
-            })
-        }
-        return () => abortController.abort()
-    }, [data])
+        let isMounted = true
+        if (isMounted) fetchPokemons()
+        return () => isMounted = false
+    }, [fetchPokemons])
 
-    return { items, pending, error, data }
+    return { items, pending, error, nextUrl }
 }
 
 export default usePokemonFetch
