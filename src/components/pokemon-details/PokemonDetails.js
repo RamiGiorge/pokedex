@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import Button from '../UI/Button'
 import { PokemonsContext } from '../../context/PokemonsContext'
 import { useContext, useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const PokemonDetails = () => {
     const [pokemon, setPokemon] = useState((null))
@@ -17,6 +18,18 @@ const PokemonDetails = () => {
 
     const navigateBack = () => {
         history.push("/")
+    }
+
+    const navigatePrevPokemon = () => {
+        let index = parseInt(id)
+        if (index === 1) index = pokemons.length + 1
+        history.push(`/pokemon/${index - 1}`)
+    }
+
+    const navigateNextPokemon = () => {
+        let index = parseInt(id)
+        if (index === pokemons.length) index = 0
+        history.push(`/pokemon/${index + 1}`)
     }
 
     const renderDetails = () => {
@@ -71,7 +84,11 @@ const PokemonDetails = () => {
     return (
         <div className={styles.detailsContainer}>
             <Button handleClick={navigateBack}>Back</Button>
-            {pokemon && renderDetails()}
+            <div className={styles.pokemonContainer}>
+                <FontAwesomeIcon icon='caret-left' size='3x' onClick={navigatePrevPokemon} className={styles.navigationIcons} />
+                {pokemon && renderDetails()}
+                <FontAwesomeIcon icon='caret-right' size='3x' onClick={navigateNextPokemon} className={styles.navigationIcons} />
+            </div>
         </div >
     )
 }

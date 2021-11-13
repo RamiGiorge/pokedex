@@ -38,8 +38,8 @@ const SearchForm = () => {
 
     const handleSearch = (e) => {
         e.preventDefault()
+        if (!searchInput) setFiltered(pokemons)
         setSearchInput('')
-        if (!searchInput) return
         setFiltered(suggestions)
         setSuggestions(null)
     }
