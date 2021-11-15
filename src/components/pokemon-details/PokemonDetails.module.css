@@ -126,12 +126,16 @@
   opacity: .7;
 }
 
-@media screen and (max-width: 740px) {
-  .generalInfo,
-  .detailedInfo {
-    width: auto;
-    padding: 10px;
+@media screen and (max-width: 918px) {
+  .pokemonDetails {
+    flex-wrap: wrap;
   }
+  .generalInfo, .detailedInfo {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 740px) {
   .generalInfo > .title,
   .detailedInfo > .title {
     font-size: 20px;
@@ -143,5 +147,11 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .generalInfo > img {
+    zoom: 200%;
   }
 }
