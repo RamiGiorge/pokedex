@@ -1,4 +1,4 @@
-import { useHistory, useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import styles from './PokemonDetails.module.css'
 import { v4 as uuidv4 } from 'uuid'
 import Button from '../UI/Button'
@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const PokemonDetails = () => {
     const [pokemon, setPokemon] = useState((null))
     const { id } = useParams()
-    const history = useHistory()
+    const navigate = useNavigate()
     const { pokemons } = useContext(PokemonsContext)
 
     useEffect(() => {
@@ -17,19 +17,19 @@ const PokemonDetails = () => {
     }, [id, pokemons])
 
     const navigateBack = () => {
-        history.push("/")
+        navigate("/")
     }
 
     const navigatePrevPokemon = () => {
         let index = parseInt(id)
         if (index === 1) index = pokemons.length + 1
-        history.push(`/pokemon/${index - 1}`)
+        navigate(`/pokemon/${index - 1}`)
     }
 
     const navigateNextPokemon = () => {
         let index = parseInt(id)
         if (index === pokemons.length) index = 0
-        history.push(`/pokemon/${index + 1}`)
+        navigate(`/pokemon/${index + 1}`)
     }
 
     const renderDetails = () => {
