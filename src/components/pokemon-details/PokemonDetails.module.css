@@ -25,7 +25,7 @@
 .detailedInfo {
   padding: 30px;
   width: 400px;
-  height: 600px;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -38,7 +38,7 @@
 .generalInfo > .title,
 .detailedInfo > .title {
   font-size: 30px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 }
 
 .generalInfo > .status {
@@ -113,11 +113,11 @@
   margin-top: 10px;
 }
 
-
 .navigationIcons {
   cursor: pointer;
   transition: .3s;
   color: rgb(53, 88, 116);
+  border: 1p xsolid white;
 }
 
 .navigationIcons:hover {
@@ -128,10 +128,7 @@
 
 @media screen and (max-width: 918px) {
   .pokemonDetails {
-    flex-wrap: wrap;
-  }
-  .generalInfo, .detailedInfo {
-    width: 100%;
+    flex-direction: column;
   }
 }
 
@@ -147,6 +144,18 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+  }
+  .types, .abilities {
+    flex-direction: column;
+  }
+  .typesContainer {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 534px) {
+  .generalInfo, .detailedInfo {
+    width: 100%;
   }
 }
 
