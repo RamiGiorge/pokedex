@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Tabs.module.css'
 
 const Tabs = ({ tabs, activeTab, setActiveTab }) => {
@@ -8,4 +9,4 @@ const Tabs = ({ tabs, activeTab, setActiveTab }) => {
     )
 }
 
-export default Tabs
+export default React.memo(Tabs)

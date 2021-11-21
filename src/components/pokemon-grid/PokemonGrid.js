@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useMemo, useState } from 'react'
 import PokemonCard from '../pokemon-card/PokemonCard'
 import styles from './PokemonGrid.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,7 +9,7 @@ import Tabs from '../tabs/Tabs'
 const PokemonGrid = () => {
     const [activeTab, setActiveTab] = useState('All')
     const { pokemons, filtered, setFiltered, nextUrl, setUrl } = useContext(PokemonsContext)
-    const tabs = ['All', 'Caught', 'Uncaught']
+    const tabs = useMemo(() => ['All', 'Caught', 'Uncaught'], [])
     const data = filtered ? filtered : pokemons
 
     const renderPokemons = () => {
