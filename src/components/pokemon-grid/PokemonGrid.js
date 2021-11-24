@@ -3,8 +3,8 @@ import PokemonCard from '../pokemon-card/PokemonCard'
 import styles from './PokemonGrid.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { PokemonsContext } from '../../context/PokemonsContext'
-import Button from '../UI/Button'
 import Tabs from '../tabs/Tabs'
+import Button from '../UI/Button'
 
 const PokemonGrid = () => {
     const [activeTab, setActiveTab] = useState('All')
@@ -30,12 +30,14 @@ const PokemonGrid = () => {
 
     return (
         <>
-            <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
-            {filtered && <Button handleClick={handleClick}>Back</Button>}
+            <div className={styles.barWrapper}>
+                {filtered && <Button handleClick={handleClick}>Back</Button>}
+                <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+            </div>
             <div className={styles.pokemonGrid}>
                 {renderPokemons()}
             </div>
-            {!filtered && nextUrl && <button onClick={() => setUrl(nextUrl)} className='fetchMore'>
+            {!filtered && activeTab === 'All' && nextUrl && <button onClick={() => setUrl(nextUrl)} className='fetchMore'>
                 <FontAwesomeIcon icon='chevron-down' className='fetchIcon' />
             </button>}
         </>

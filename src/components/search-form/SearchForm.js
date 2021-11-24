@@ -1,27 +1,29 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, useRef } from 'react'
 import styles from './SearchForm.module.css'
 import { PokemonsContext } from '../../context/PokemonsContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SearchForm = () => {
     const [searchInput, setSearchInput] = useState('')
-    const [suggestions, setSuggestions] = useState(null)
     const [showAutocomplete, setShowAutocomplete] = useState(null)
     const { pokemons, setFiltered } = useContext(PokemonsContext)
+    const [suggestions, setSuggestions] = useState(null)
+    const autoRef = useRef(null)
 
     useEffect(() => {
         const clickListen = (e) => {
-            if (!e.target.className.includes('autocomplete')) {
-                setShowAutocomplete(false)
-            }
+            if (showAutocomplete && autoRef.current && !autoRef.current.contains(e.target)) setShowAutocomplete(false)
         }
         window.addEventListener('click', clickListen)
         return () => window.removeEventListener('click', clickListen)
-    }, [])
+    }, [showAutocomplete])
 
+    useEffect(() => {
+        setSuggestions(pokemons)
+    }, [pokemons])
 
     const handleInputChange = (e) => {
-        let input = e.target.value.trim()
+        const input = e.target.value.trim()
         setSearchInput(input)
         let autocomplete = []
         pokemons.forEach(pokemon => {
@@ -32,30 +34,33 @@ const SearchForm = () => {
                 return input === (type.name) ? autocomplete.push(pokemon) : null
             })
         })
-        setSuggestions(autocomplete)
+        autocomplete.length ? setSuggestions(autocomplete) : setSuggestions(null)
         autocomplete.length ? setShowAutocomplete(true) : setShowAutocomplete(false)
     }
 
     const handleSearch = (e) => {
         e.preventDefault()
-        if (!searchInput) setFiltered(pokemons)
+        if (searchInput && !suggestions) return
+        !searchInput ? setFiltered(null) : setFiltered(suggestions)
+        setSuggestions(pokemons)
         setSearchInput('')
-        setFiltered(suggestions)
-        setSuggestions(null)
     }
 
-    const handleAutocomplete = (e) => {
-        setSearchInput(e.target.textContent)
-        setSuggestions(suggestions.filter(pokemon => pokemon.name === e.target.textContent))
+    const handleSuggestionClick = (e) => {
+        setFiltered(suggestions.filter(pokemon => pokemon.name === e.target.textContent))
+        setSearchInput('')
+        setSuggestions(pokemons)
+        setShowAutocomplete(false)
     }
 
     return (
         <form onSubmit={handleSearch} className={styles.searchForm}>
             <div className={styles.searchField}>
-                <input type='text' value={searchInput} placeholder='Search pokemons by name, id or type!' onChange={handleInputChange} />
-                {showAutocomplete && <div className={styles.autocomplete}>{suggestions.map((suggestion => {
-                    return <p key={suggestion.id} onClick={handleAutocomplete}>{suggestion.name}</p>
-                }))}</div>}
+                <input type='text' value={searchInput} placeholder='Search pokemons by name, id or type!' onChange={handleInputChange} onClick={() => setShowAutocomplete(true)} />
+                {showAutocomplete && <ul className={styles.autocomplete} ref={autoRef}>
+                    {suggestions?.map((suggestion => {
+                        return <li key={suggestion.id} onClick={handleSuggestionClick}>{suggestion.name}</li>
+                    }))}</ul>}
                 <button className={styles.searchBtn}><FontAwesomeIcon icon='search' className={styles.searchIcon} /></button>
             </div>
         </form>

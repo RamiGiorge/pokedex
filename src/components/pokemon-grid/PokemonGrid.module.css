@@ -4,3 +4,9 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 5px;
 }
+
+.barWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,13 @@
+.notFound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    letter-spacing: 1.5px;
+}
+
+.notFound a {
+    text-decoration: none;
+    color:  rgb(44, 182, 206);
+}
