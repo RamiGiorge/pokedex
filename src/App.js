@@ -5,6 +5,7 @@ import "./components/fontawesome/FontAwesome";
 import './App.css';
 import LoadingFB from './components/fallback/LoadingFB'
 import NotFound from './components/not-found/NotFound';
+import Game from './containers/Game';
 
 const Header = lazy(() => import('./components/header/Header'))
 const Home = lazy(() => import('./containers/Home'))
@@ -20,6 +21,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/pokemon/:id' element={<PokemonDetails />} />
+              <Route path='/game' element={<Game />} />
               <Route path='*' element={<NotFound />} />
             </Routes>
           </PokemonProvider>

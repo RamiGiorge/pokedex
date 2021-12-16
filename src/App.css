@@ -45,6 +45,11 @@ body {
   pointer-events: none;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 @keyframes load {
   from {opacity: 0;}
   to {opacity: 1;}

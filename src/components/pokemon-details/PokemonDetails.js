@@ -85,9 +85,9 @@ const PokemonDetails = () => {
         <div className={styles.detailsContainer}>
             <Button handleClick={navigateBack}>Back</Button>
             <div className={styles.pokemonContainer}>
-                <FontAwesomeIcon icon='caret-left' size='3x' onClick={navigatePrevPokemon} className={styles.navigationIcons} />
+                <FontAwesomeIcon icon='caret-left' size='3x' onClick={navigatePrevPokemon} className={styles.navigationIcons + 'prev'} />
                 {pokemon && renderDetails()}
-                <FontAwesomeIcon icon='caret-right' size='3x' onClick={navigateNextPokemon} className={styles.navigationIcons} />
+                <FontAwesomeIcon icon='caret-right' size='3x' onClick={navigateNextPokemon} className={styles.navigationIcons + 'next'} />
             </div>
         </div >
     )

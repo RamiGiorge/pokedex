@@ -1,0 +1,59 @@
+.game {
+    text-align: center;
+}
+
+.cardGrid {
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.memoryCard {
+    border-radius: 8px;
+    box-shadow:  inset 0px 0px 20px rgba(161, 218, 190, 0.63);
+    position: relative;
+    flex-basis: 22%;
+}
+
+.memoryCard img {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.memoryCard .front {
+    transform: rotateY(90deg);
+    position: absolute;
+    transition: all linear .2s;
+}
+
+.flipped .front {
+    transform: rotateY(0deg);
+    transition-delay: .2s;
+}
+
+.memoryCard .back {
+    transition: all linear .2s;
+    transition-delay: .2s;
+}
+
+.flipped .back {
+    transform: rotateY(90deg);
+    transition-delay: 0s;
+}
+
+.game > p {
+    margin-top: 10px;
+    color: rgba(248, 16, 86, 0.76);
+    font-weight: bold;
+}
+
+.btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}

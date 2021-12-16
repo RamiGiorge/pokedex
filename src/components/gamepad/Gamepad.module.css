@@ -1,0 +1,19 @@
+.gamepadContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.gamepadContainer > h3 {
+  color: rgba(248, 16, 86, 0.76);
+}
+
+.gamepadContainer > button {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+}

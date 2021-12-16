@@ -52,11 +52,6 @@
     letter-spacing: 1.5px;
 }
 
-.card a {
-    text-decoration: none;
-    color: white;
-}
-
 .card .types {
     width: 100%;
     display: flex;
