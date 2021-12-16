@@ -38,4 +38,7 @@ Built with React and CSS modules
   
 ## Screenshot
   
-<img width="629" alt="Screen Shot 2021-10-30 at 9 55 06 PM" src="https://user-images.githubusercontent.com/89678609/139557161-172b39fd-ae94-4b66-9ac4-946db14f7dd5.png">
+<img width="1440" alt="Screen Shot 2021-12-15 at 12 12 15 PM" src="https://user-images.githubusercontent.com/89678609/146350011-6e1d90e1-90ef-4a5f-9b59-08d06d3c7b84.png">
+<img width="1440" alt="Screen Shot 2021-12-15 at 12 12 57 PM" src="https://user-images.githubusercontent.com/89678609/146350032-5097b538-5392-47c3-a395-89f95c82ac5a.png">
+<img width="469" alt="Screen Shot 2021-12-15 at 12 06 22 PM" src="https://user-images.githubusercontent.com/89678609/146350051-9433c47a-3350-4580-a7d0-55d440f82ed4.png">
+
