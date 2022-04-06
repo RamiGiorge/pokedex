@@ -1,0 +1,2 @@
+(this.webpackJsonptranslated=this.webpackJsonptranslated||[]).push([[5],{40:function(t,e,a){t.exports={title:"Header_title__3_fub",letter:"Header_letter__33KeE"}},48:function(t,e,a){"use strict";a.r(e);var r=a(40),s=a.n(r),n=a(1);e.default=function(t){var e=t.title.toUpperCase().split("");return Object(n.jsx)("div",{className:s.a.title,children:e.map((function(t,e){return Object(n.jsx)("h1",{className:s.a.letter,children:t},e)}))})}}}]);
+//# sourceMappingURL=5.7d46fea3.chunk.js.map
