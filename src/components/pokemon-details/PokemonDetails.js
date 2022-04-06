@@ -17,19 +17,19 @@ const PokemonDetails = () => {
     }, [id, pokemons])
 
     const navigateBack = () => {
-        navigate("/")
+        navigate("/pokedex")
     }
 
     const navigatePrevPokemon = () => {
         let index = parseInt(id)
         if (index === 1) index = pokemons.length + 1
-        navigate(`/pokemon/${index - 1}`)
+        navigate(`/pokedex/pokemon/${index - 1}`)
     }
 
     const navigateNextPokemon = () => {
         let index = parseInt(id)
         if (index === pokemons.length) index = 0
-        navigate(`/pokemon/${index + 1}`)
+        navigate(`/pokedex/pokemon/${index + 1}`)
     }
 
     const renderDetails = () => {
@@ -85,9 +85,9 @@ const PokemonDetails = () => {
         <div className={styles.detailsContainer}>
             <Button handleClick={navigateBack}>Back</Button>
             <div className={styles.pokemonContainer}>
-                <FontAwesomeIcon icon='caret-left' size='3x' onClick={navigatePrevPokemon} className={styles.navigationIcons + 'prev'} />
+                <FontAwesomeIcon icon='caret-left' size='3x' onClick={navigatePrevPokemon} className={styles.navigationIcons + 'prev pointer'} />
                 {pokemon && renderDetails()}
-                <FontAwesomeIcon icon='caret-right' size='3x' onClick={navigateNextPokemon} className={styles.navigationIcons + 'next'} />
+                <FontAwesomeIcon icon='caret-right' size='3x' onClick={navigateNextPokemon} className={styles.navigationIcons + 'next pointer'} />
             </div>
         </div >
     )

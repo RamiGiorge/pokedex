@@ -8,7 +8,7 @@ const NotFound = () => {
         <div className={styles.notFound}>
             <LoadingFB />
             <h2>Where are you going?!</h2>
-            <h3>Let's take you back <Link to='/'>HOME</Link></h3>
+            <h3>Let's take you back <Link to='/pokedex'>HOME</Link></h3>
         </div>
     )
 }

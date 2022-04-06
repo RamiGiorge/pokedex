@@ -62,7 +62,7 @@ const Game = () => {
     return (
         <div className={styles.game}>
             <div className={styles.btnContainer}>
-                <Button handleClick={() => navigate('/')}>Home</Button>
+                <Button handleClick={() => navigate('/pokedex')}>Home</Button>
                 <Button handleClick={shuffle}>New Game</Button>
             </div>
             <p>Attempts - {turns}</p>

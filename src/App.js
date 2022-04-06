@@ -19,9 +19,9 @@ function App() {
           <Header title='pokédex' />
           <PokemonProvider>
             <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/pokemon/:id' element={<PokemonDetails />} />
-              <Route path='/game' element={<Game />} />
+              <Route path='/pokedex' element={<Home />} />
+              <Route path='/pokedex/pokemon/:id' element={<PokemonDetails />} />
+              <Route path='/pokedex/game' element={<Game />} />
               <Route path='*' element={<NotFound />} />
             </Routes>
           </PokemonProvider>

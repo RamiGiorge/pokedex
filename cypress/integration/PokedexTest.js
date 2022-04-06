@@ -9,8 +9,8 @@ describe('Unit and integration testing', () => {
 
     const searchPokemon = () => {
         cy.get(className('pokemonGrid')).should('be.visible')
-        cy.get(searchField).should('be.visible').type(pokemon).then(() => {
-            cy.get(className('autocomplete')).should('be.visible').should('contain.text', pokemon).click()
+        cy.get(searchField).should('be.visible').click().type(pokemon).then(() => {
+            cy.get(className('autocomplete')).should('be.visible').should('have.length', 1).should('contain.text', pokemon).click()
         })
     }
 

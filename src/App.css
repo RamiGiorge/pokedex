@@ -31,14 +31,13 @@ body {
   color: rgb(33, 106, 148);
   font-size: 20px;
   padding: 10px;
-  transition: .2s;
+  transition: 0.2s;
   animation: load infinite 1s ease-in-out alternate;
 }
 
 .fetchMore:hover {
   transform: scale(1.2);
   color: rgba(248, 16, 86, 0.76);
-
 }
 
 .fetchIcon {
@@ -50,7 +49,15 @@ a {
   color: white;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 @keyframes load {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
