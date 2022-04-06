@@ -13,7 +13,7 @@ Built with React and CSS modules
 2. Install all dependencies using 'npm install' (This will also install Cypress 9.5.3 as a dev dependency)
 3. Type 'npm start' to start the development server
 
-- Go to http://localhost:3000/ to view the app
+- Go to http://localhost:3000/pokedex to view the app
 - Type 'npm test' to start Cyress test runner (Dev server must be already running)
 
 ## Using the app
