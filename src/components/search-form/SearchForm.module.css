@@ -1,61 +1,67 @@
 .searchForm {
-    width: 50%;
-    margin: 0 auto 20px;
+  width: 50%;
+  margin: 0 auto 20px;
 }
 
 .searchField {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border-radius: 5px;
-    background: white;
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 5px;
+  background: white;
+  position: relative;
 }
 
 .searchField > input {
-    width: 100%;
-    border: none;
-    outline: none;
+  width: 100%;
+  border: none;
+  outline: none;
 }
 
 .autocomplete {
-    width: 100%;
-    background: none;
-    color: white;
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    transform: translateY(100%);
-    padding: 10px;
-    z-index: 9;
-    cursor: pointer;
-    border-radius: 10px;
-    margin-top: 20px;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, .7);
-    backdrop-filter: blur(10px);
-    list-style: none;
+  width: 100%;
+  background: none;
+  color: white;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  transform: translateY(100%);
+  padding: 10px;
+  z-index: 9;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  list-style: none;
 }
 
 .autocomplete > li:hover {
-    font-size: 18px;
-    color: #19cdda;
+  font-size: 18px;
+  color: #19cdda;
 }
 
 .searchBtn {
-    border: none;
-    outline: none;
-    font-weight: 700;
-    background: none;
-    cursor: pointer;
-    transition: .2s;
+  border: none;
+  outline: none;
+  font-weight: 700;
+  background: none;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .searchBtn:hover {
-    transform: scale(1.2);
-    color: rgba(248, 16, 86, 0.76);
+  transform: scale(1.2);
+  color: rgba(248, 16, 86, 0.76);
 }
 
 .searchIcon {
-    pointer-events: none;
+  pointer-events: none;
+}
+
+@media (max-width: 616px) {
+  .searchForm {
+    width: 80%;
+  }
 }

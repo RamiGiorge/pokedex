@@ -2,13 +2,13 @@
 
 describe('Unit and integration testing', () => {
     const searchField = '[class*="searchField"] > input'
+    const pokemons = '[class *= "PokemonCard_title"]'
     const pokemon = 'ivysaur'
     const className = (text) => {
         return `[class*=${text}]`
     }
 
     const searchPokemon = () => {
-        cy.get(className('pokemonGrid')).should('be.visible')
         cy.get(searchField).should('be.visible').click().type(pokemon).then(() => {
             cy.get(className('autocomplete')).should('be.visible').should('have.length', 1).should('contain.text', pokemon).click()
         })
@@ -16,6 +16,8 @@ describe('Unit and integration testing', () => {
 
     beforeEach(() => {
         cy.visit("/")
+        cy.get(className('pokemonGrid')).should('be.visible')
+        cy.get(pokemons).should('have.length', 20)
     })
 
     it('Should render homepage correctly', () => {
@@ -38,6 +40,12 @@ describe('Unit and integration testing', () => {
             cy.get(className('autocomplete')).should('be.visible').should('contain.text', pokemon).click().then(() => {
                 cy.get(className('card')).should('be.visible').should('contain.text', 'grass')
             })
+        })
+    })
+
+    it('Allows the user to fetch more pokemons', () => {
+        cy.get(className('fetchMore')).should('be.visible').click().then(() => {
+            cy.get(pokemons).should('have.length', 40)
         })
     })
 
@@ -118,5 +126,4 @@ describe('Unit and integration testing', () => {
             cy.get(firstCardBack).should('be.visible')
         })
     })
-
 })
