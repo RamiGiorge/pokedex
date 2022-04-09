@@ -7,6 +7,8 @@ Play a pokemon memory game.
 
 Built with React and CSS modules
 
+View here: https://ramigiorge.github.io/pokedex/
+
 ## Installation & Setup
 
 1. Clone this repository using the terminal or command line with 'git clone url' command
